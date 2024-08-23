@@ -21,4 +21,4 @@ module.exports.Article=model('Article',Schema({
         data:Buffer,
         contentType:String
     }
-}))
+},{timestamps:true}))

@@ -8,7 +8,8 @@ module.exports.Project=model('Project',Schema({
         required:true,
         minLength:10,
     },
-    github:String,
+    server:String,
+    client:String,
     preview:String,
     photo:{
         data:Buffer,

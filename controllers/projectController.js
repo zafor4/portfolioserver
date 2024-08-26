@@ -15,7 +15,8 @@ module.exports.createProject=async (req,res)=>{
             const projectFields={
                 name:String(fields.name),
                 description:String(fields.description),
-                github:String(fields.github),
+                server:String(fields.server),
+                client:String(fields.client),
                 preview:String(fields.preview),
             }
             const {error}=validate(_.pick(projectFields,['name','description']))
@@ -30,7 +31,7 @@ module.exports.createProject=async (req,res)=>{
             const result=await project.save()
             return res.status(201).send({
                 message:"Project saved sucessfully!!",
-                data:_.pick(result,['name','description','github','preview'])
+                data:_.pick(result,['name','description','server','client','preview'])
             })
     })
 

@@ -1,4 +1,4 @@
-const { createProject, getProjects, getProjectById, deleteProject, getPhoto }=require('../controllers/projectController')
+const { createProject, getProjects, getProjectById, deleteProject, getPhoto,toggleProject }=require('../controllers/projectController')
 const authorize=require('../middlewares/authorize')
 const admin=require('../middlewares/admin')
 
@@ -15,5 +15,7 @@ router.route('/:id')
 
 router.route('/photo/:id')
 .get(getPhoto)
+router.route('/:id')
+.put([authorize,admin],toggleProject)
 
 module.exports=router

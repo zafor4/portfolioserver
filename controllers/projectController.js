@@ -18,6 +18,7 @@ module.exports.createProject=async (req,res)=>{
                 server:String(fields.server),
                 client:String(fields.client),
                 preview:String(fields.preview),
+                highlight:fields.highlight==='true'?true:false
             }
             const {error}=validate(_.pick(projectFields,['name','description']))
             if (error) return res.status(400).send(error.details[0].message);
@@ -63,4 +64,16 @@ module.exports.deleteProject=async (req,res)=>{
 const projectId=req.params.id
 await Project.findByIdAndDelete(projectId)
 return res.status(201).send("Project deleted ")
+}
+
+module.exports.toggleProject=async (req,res)=>{
+    const projectId=req.params.id
+    const project=await Project.findById(projectId);
+    if (!project) return res.status(404).send("Not found");
+    project.highlight = !project.highlight;
+    await project.save();
+    return res.status(201).send({
+      message: "Project highlight status toggled successfully!",
+      data: _.pick(project, ["name", "description", "highlight"]),
+    });
 }

@@ -14,6 +14,10 @@ module.exports.Project=model('Project',Schema({
     photo:{
         data:Buffer,
         contentType:String
+    },
+    highlight:{
+        type:Boolean,
+        default:false
     }
 },{timestamps:true}))
 

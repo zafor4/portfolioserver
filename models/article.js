@@ -20,5 +20,9 @@ module.exports.Article=model('Article',Schema({
     photo:{
         data:Buffer,
         contentType:String
+    },
+    highlight:{
+        type:Boolean,
+        default:false
     }
 },{timestamps:true}))

@@ -3,6 +3,7 @@ const joi=require('joi')
 
 module.exports.Project=model('Project',Schema({
     name:String,
+    category:String,
     description:{
         type:String,
         required:true,

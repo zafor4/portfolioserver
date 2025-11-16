@@ -14,6 +14,7 @@ module.exports.createProject=async (req,res)=>{
 
             const projectFields={
                 name:String(fields.name),
+                category:String(fields.category),
                 description:String(fields.description),
                 server:String(fields.server),
                 client:String(fields.client),
